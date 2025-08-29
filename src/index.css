@@ -2,41 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* RI Research Lab Design System - Sophisticated Dark Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark base colors inspired by the logo */
+    --background: 215 28% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system with subtle transparency */
+    --card: 217 28% 12%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover elements */
+    --popover: 217 28% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary electric blue from logo */
+    --primary: 200 100% 60%;
+    --primary-foreground: 215 28% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary with subtle blue tint */
+    --secondary: 217 28% 15%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted backgrounds */
+    --muted: 217 28% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent neon green from logo */
+    --accent: 150 100% 45%;
+    --accent-foreground: 215 28% 8%;
 
-    --destructive: 0 84.2% 60.2%;
+    /* Neural network blue variant */
+    --neural: 195 100% 70%;
+    --neural-foreground: 215 28% 8%;
+
+    /* Data visualization accent */
+    --data: 180 100% 50%;
+    --data-foreground: 215 28% 8%;
+
+    /* Destructive states */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 217 28% 20%;
+    --input: 217 28% 18%;
+    --ring: 200 100% 60%;
 
-    --radius: 0.5rem;
+    /* Design system radius */
+    --radius: 0.75rem;
+
+    /* Advanced gradients for data visualization */
+    --gradient-neural: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neural)) 50%, hsl(var(--accent)) 100%);
+    --gradient-data: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--data)) 100%);
+    --gradient-hero: radial-gradient(ellipse at center, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+    
+    /* Sophisticated shadows */
+    --shadow-neural: 0 0 30px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--accent) / 0.2);
+    --shadow-data: 0 10px 40px hsl(var(--primary) / 0.1);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +131,80 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer components {
+  /* Neural Network Animation */
+  .neural-background {
+    background: hsl(var(--background));
+    background-image: var(--gradient-hero);
+  }
+
+  .neural-dot {
+    background: hsl(var(--primary));
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  .neural-line {
+    stroke: hsl(var(--primary) / 0.3);
+    animation: flow 3s ease-in-out infinite;
+  }
+
+  .research-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-smooth);
+  }
+
+  .research-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-neural);
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  .project-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-smooth);
+  }
+
+  .project-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-data);
+  }
+
+  .hero-text {
+    background: var(--gradient-neural);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .data-glow {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.5);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.8);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes flow {
+  0%, 100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+  50% {
+    stroke-dashoffset: 10;
+    opacity: 0.8;
   }
 }
