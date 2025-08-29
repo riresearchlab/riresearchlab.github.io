@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Cpu, Brain, Network, MessageSquare, Layers } from 'lucide-react';
+import { Cpu, Brain, Network, MessageSquare, Layers, Globe, Satellite, TrendingUp, Clock, Heart } from 'lucide-react';
 
 const researchAreas = [
   {
@@ -36,6 +36,41 @@ const researchAreas = [
     icon: MessageSquare,
     summary: 'Natural language processing and generative AI systems.',
     description: 'Developing sophisticated language models for multilingual understanding, generation, and reasoning. Our work focuses on efficiency, safety, and cultural adaptation of LLMs.',
+  },
+  {
+    id: 'geo-data-analysis',
+    title: 'Geo Data Analysis',
+    icon: Globe,
+    summary: 'Spatial data processing and geographical intelligence systems.',
+    description: 'Advanced geospatial analytics for urban planning, environmental monitoring, and location-based insights. Our research includes GIS optimization, satellite imagery analysis, and real-time mapping solutions.',
+  },
+  {
+    id: 'space-data',
+    title: 'Space Data Analysis',
+    icon: Satellite,
+    summary: 'Astronomical data processing and space mission analytics.',
+    description: 'Processing vast datasets from space missions, satellite observations, and astronomical surveys. Our work includes orbital mechanics modeling, space weather prediction, and deep space exploration data analysis.',
+  },
+  {
+    id: 'financial-analysis',
+    title: 'Financial Analytics',
+    icon: TrendingUp,
+    summary: 'Quantitative finance and market intelligence systems.',
+    description: 'Developing predictive models for financial markets, risk assessment algorithms, and blockchain analytics. Our research focuses on algorithmic trading, fraud detection, and financial technology innovation.',
+  },
+  {
+    id: 'history-visualization',
+    title: 'History Visualization',
+    icon: Clock,
+    summary: 'Digital humanities and historical data representation.',
+    description: 'Creating immersive visualizations of historical data, cultural heritage preservation, and timeline analytics. Our work includes archaeological data modeling, historical trend analysis, and interactive historical narratives.',
+  },
+  {
+    id: 'human-health',
+    title: 'Human Health Analytics',
+    icon: Heart,
+    summary: 'Healthcare data science and medical informatics.',
+    description: 'Advancing personalized medicine through genomic analysis, epidemiological modeling, and health outcome prediction. Our research includes drug discovery acceleration, clinical trial optimization, and public health monitoring systems.',
   },
 ];
 
