@@ -114,28 +114,13 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button size="lg" className="group data-glow">
-            Explore Our Research
+          <Button size="lg" className="group data-glow" onClick={() => window.location.href = '#researchareas'}>
+            Explore Our Research Areas
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+          <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" onClick={() => window.location.href = '#projects'}>
             View Projects
           </Button>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="p-6">
-            <h3 className="text-3xl font-bold text-primary mb-2">5+</h3>
-            <p className="text-muted-foreground">Research Areas</p>
-          </div>
-          <div className="p-6">
-            <h3 className="text-3xl font-bold text-accent mb-2">25+</h3>
-            <p className="text-muted-foreground">Active Projects</p>
-          </div>
-          <div className="p-6">
-            <h3 className="text-3xl font-bold text-neural mb-2">100+</h3>
-            <p className="text-muted-foreground">Collaborators</p>
-          </div>
         </div>
       </div>
 

@@ -18,7 +18,6 @@ const categories = [
   'Pollution & Resource Wastage',
   'Knowledge Mapping',
   'Manufacturing Automation',
-  'Geo Data Analysis',
   'Space Data',
   'Financial Analytics',
   'History Visualization',
@@ -93,17 +92,6 @@ const projects = [
     solution: 'Implemented a comprehensive monitoring network that tracks environmental parameters and optimizes resource allocation.',
   },
   {
-    id: 7,
-    title: 'Urban Geospatial Intelligence',
-    category: 'Geo Data Analysis',
-    image: trafficImage,
-    description: 'Advanced GIS analytics for urban planning and smart city development.',
-    technologies: ['GIS', 'Spatial Analytics', 'Remote Sensing', 'Machine Learning'],
-    results: 'Improved urban planning efficiency by 45%',
-    problem: 'Urban planners lack comprehensive spatial intelligence tools for data-driven decision making.',
-    solution: 'Developed an integrated geospatial platform that combines satellite imagery, demographic data, and predictive modeling.',
-  },
-  {
     id: 8,
     title: 'Satellite Mission Analytics',
     category: 'Space Data',
@@ -161,7 +149,7 @@ const ProjectsSection = () => {
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-text">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-text" id="projects">
             Projects & Applications
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

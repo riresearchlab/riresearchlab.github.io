@@ -57,7 +57,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">Email</h4>
-                  <p className="text-muted-foreground">researchlabri@gmail.com</p>
+                  <p className="text-muted-foreground">riresearchlabratory@gmail.com</p>
                 </div>
               </div>
 
@@ -91,29 +91,11 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h4 className="text-xl font-semibold mb-4">Office Hours</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div className="flex justify-between">
-                  <span>Monday - Friday</span>
-                  <span>9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span>10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span>Closed</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Contact Form */}
           <div className="bg-card border border-border rounded-xl p-8">
-            <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold mb-6">Send us a Message (Currently Unavailable)</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -38,13 +38,6 @@ const researchAreas = [
     description: 'Developing sophisticated language models for multilingual understanding, generation, and reasoning. Our work focuses on efficiency, safety, and cultural adaptation of LLMs.',
   },
   {
-    id: 'geo-data-analysis',
-    title: 'Geo Data Analysis',
-    icon: Globe,
-    summary: 'Spatial data processing and geographical intelligence systems.',
-    description: 'Advanced geospatial analytics for urban planning, environmental monitoring, and location-based insights. Our research includes GIS optimization, satellite imagery analysis, and real-time mapping solutions.',
-  },
-  {
     id: 'space-data',
     title: 'Space Data Analysis',
     icon: Satellite,
@@ -81,7 +74,7 @@ const ResearchAreasSection = () => {
     <section className="py-24 px-6 bg-muted/20">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-text">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-text" id="researchareas">
             Research Areas
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
