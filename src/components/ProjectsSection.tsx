@@ -7,7 +7,7 @@ import ethosLearningImg from '@/assets/ethos-learning.jpg';
 import fridgeForceImg from '@/assets/fridge-force.jpg';
 import greenStepperImg from '@/assets/green-stepper.jpg';
 import holoClinicImg from '@/assets/holo-clinic.jpg';
-import kinetixFlowImg from '@/assets/kinetix-flow.svg';
+import kinetixFlowImg from '@/assets/kinetix-flow.png';
 import linguaTrustImg from '@/assets/lingua-trust.jpg';
 import mobiCircularImg from '@/assets/mobi-circular.jpg';
 import nomadicHealthImg from '@/assets/nomadic-health.png';
