@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import { Filter, ExternalLink, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ammoniaDriveImg from '@/assets/ammonia-drive.jpg';
+import bioEnvelopeImg from '@/assets/bio-envelope.png';
+import ethosLearningImg from '@/assets/ethos-learning.jpg';
+import fridgeForceImg from '@/assets/fridge-force.jpg';
+import greenStepperImg from '@/assets/green-stepper.jpg';
+import holoClinicImg from '@/assets/holo-clinic.jpg';
+import kinetixFlowImg from '@/assets/kinetix-flow.svg';
+import linguaTrustImg from '@/assets/lingua-trust.jpg';
+import mobiCircularImg from '@/assets/mobi-circular.jpg';
+import nomadicHealthImg from '@/assets/nomadic-health.png';
+import sentinelBotInfraImg from '@/assets/sentinel-bot-infra.jpg';
+import sustainStackImg from '@/assets/sustain-stack.jpg';
 
 const categories = [
   'All Projects',
@@ -23,7 +35,7 @@ const projects = [
     id: 1,
     title: 'Ammonia Drive',
     category: 'Clean Energy Logistics',
-    image: '/ammonia-drive.jpg',
+    image: ammoniaDriveImg,
     url: 'https://riresearchlab.github.io/ammonia-drive/',
     description: 'Enterprise platform transitioning heavy-duty Middle Mile logistics from diesel to green ammonia—safely, verifiably, and profitably.',
     technologies: ['Green Chemistry', 'AI Route Optimization', 'IoT', 'Zero-Leak Standard'],
@@ -35,7 +47,7 @@ const projects = [
     id: 2,
     title: 'Bio Envelope',
     category: 'Architectural Technology',
-    image: '/bio-envelope.png',
+    image: bioEnvelopeImg,
     url: 'https://riresearchlab.github.io/bio-envelope/',
     description: 'Transform static warehouses into living carbon sinks with photobioreactor facades that sequester CO₂ at rates 10–50× higher than trees.',
     technologies: ['Photobioreactor Technology', 'Algae Cultivation', 'Carbon Sequestration', 'Smart Software'],
@@ -47,7 +59,7 @@ const projects = [
     id: 3,
     title: 'Ethos Learning',
     category: 'Cultural Education',
-    image: '/ethos-learning.jpg',
+    image: ethosLearningImg,
     url: 'https://riresearchlab.github.io/ethos-learning/',
     description: 'AI-powered cultural context tutor that transcreates curriculum into cultural frameworks—not just translate words.',
     technologies: ['Emotion AI', 'NLP', 'Cultural Frameworks', '99+ Languages'],
@@ -59,7 +71,7 @@ const projects = [
     id: 4,
     title: 'Fridge Force',
     category: 'Food Security',
-    image: '/fridge-force.jpg',
+    image: fridgeForceImg,
     url: 'https://riresearchlab.github.io/fridge-force/',
     description: 'Solar-powered, thermal-battery cold storage for rural cooperatives, turning post-harvest loss into economic floor-stability.',
     technologies: ['Solar Power', 'Thermal Battery', 'IoT Monitoring', 'Blockchain Carbon Credits'],
@@ -71,7 +83,7 @@ const projects = [
     id: 5,
     title: 'Green Stepper',
     category: 'Vocational Training',
-    image: '/green-stepper.jpg',
+    image: greenStepperImg,
     url: 'https://riresearchlab.github.io/green-stepper/',
     description: 'Augmented Reality platform turning any location into a world-class vocational lab for the zero-carbon workforce.',
     technologies: ['Augmented Reality', 'Vocational Training', 'Mobile Platform', 'Green Technology'],
@@ -83,7 +95,7 @@ const projects = [
     id: 6,
     title: 'Holo Clinic',
     category: 'Medical AI',
-    image: '/holo-clinic.jpg',
+    image: holoClinicImg,
     url: 'https://riresearchlab.github.io/holo-clinic/',
     description: 'Privacy-first medical AI bringing specialist-level screening to underserved regions with Edge-AI that learns globally, diagnoses locally.',
     technologies: ['Edge AI', 'Federated Learning', 'Medical Imaging', 'Privacy-First Design'],
@@ -95,7 +107,7 @@ const projects = [
     id: 7,
     title: 'Kinetix Flow',
     category: 'Industrial Energy',
-    image: '/kinetix-flow.svg',
+    image: kinetixFlowImg,
     url: 'https://riresearchlab.github.io/kinetix-flow/',
     description: 'Transform fulfillment center conveyor networks into a regenerative energy grid with closed-loop energy management.',
     technologies: ['IIoT', 'Cloud Analytics', 'Energy Recovery', 'Edge Computing'],
@@ -107,7 +119,7 @@ const projects = [
     id: 8,
     title: 'Lingua Trust',
     category: 'Digital Sovereignty',
-    image: '/lingua-trust.jpg',
+    image: linguaTrustImg,
     url: 'https://riresearchlab.github.io/lingua-trust/',
     description: 'On-device Small Language Models (SLMs) that function entirely offline under community command for digital sovereignty.',
     technologies: ['Small Language Models', 'On-Device AI', 'Offline Operation', '<10W Power'],
@@ -119,7 +131,7 @@ const projects = [
     id: 9,
     title: 'Mobi Circular',
     category: 'Urban Mining',
-    image: '/mobi-circular.jpg',
+    image: mobiCircularImg,
     url: 'https://riresearchlab.github.io/mobi-circular/',
     description: 'Neural sorting and reinforcement learning for automated e-waste urban mining with unprecedented rare-earth metal recovery.',
     technologies: ['Neural Sorting', 'Reinforcement Learning', 'Blockchain Verification', 'Robotics'],
@@ -131,7 +143,7 @@ const projects = [
     id: 10,
     title: 'Nomadic Health',
     category: 'Healthcare Identity',
-    image: '/nomadic-health.png',
+    image: nomadicHealthImg,
     url: 'https://riresearchlab.github.io/nomadic-health/',
     description: 'Portable digital medical identities for the global workforce ensuring care continuity across borders.',
     technologies: ['End-to-End Encryption', 'Portable Identity', 'HIPAA/GDPR Compliant', 'Offline Support'],
@@ -143,7 +155,7 @@ const projects = [
     id: 11,
     title: 'Sentinel Bot Infra',
     category: 'Infrastructure Defense',
-    image: '/sentinel-bot-infra.jpg',
+    image: sentinelBotInfraImg,
     url: 'https://riresearchlab.github.io/sentinel-bot-infra/',
     description: 'Autonomous crawler-drone swarms that detect, predict, and repair structural decay across bridges, pipelines, and energy grids.',
     technologies: ['Drone Swarms', 'Predictive Maintenance', 'Autonomous Repair', 'AI Inspection'],
@@ -155,7 +167,7 @@ const projects = [
     id: 12,
     title: 'Sustain Stack',
     category: 'Industrial Sustainability',
-    image: '/sustain-stack.jpg',
+    image: sustainStackImg,
     url: 'https://riresearchlab.github.io/sustain-stack/',
     description: 'AI-powered waste diversion combined with biotech-integrated architecture that breathes and processes waste naturally.',
     technologies: ['EcoVision AI', 'BioEnvelope', 'Waste Processing', 'Living Architecture'],
