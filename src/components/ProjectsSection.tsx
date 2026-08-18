@@ -3,6 +3,7 @@ import { Filter, ExternalLink, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ammoniaDriveImg from '@/assets/ammonia-drive.jpg';
 import bioEnvelopeImg from '@/assets/bio-envelope.png';
+import connectingStateImg from '@/assets/government-admin.jpg';
 import ethosLearningImg from '@/assets/ethos-learning.jpg';
 import fridgeForceImg from '@/assets/fridge-force.jpg';
 import greenStepperImg from '@/assets/green-stepper.jpg';
@@ -19,6 +20,7 @@ const categories = [
   'Clean Energy Logistics',
   'Architectural Technology',
   'Cultural Education',
+  'Digital Governance',
   'Food Security',
   'Vocational Training',
   'Medical AI',
@@ -174,6 +176,18 @@ const projects = [
     results: 'Intelligent waste management and living building systems',
     problem: 'Industrial operations generate massive waste while traditional buildings contribute to environmental degradation.',
     solution: 'Developed complementary platforms combining AI waste management with biotech-integrated architectural systems.',
+  },
+  {
+    id: 13,
+    title: 'Connecting State',
+    category: 'Digital Governance',
+    image: connectingStateImg,
+    url: 'https://connecting-state.lovable.app/',
+    description: 'A citizen-centric digital governance and public engagement platform bridging the gap between citizens and government institutions with transparent issue reporting, real-time tracking, and participatory policymaking.',
+    technologies: ['Citizen Engagement', 'Real-time Tracking', 'Multi-level Administration', 'Geo-visualization', 'Transparency & Accountability'],
+    results: 'Transforming governance from reactive to proactive, data-driven, and citizen-focused ecosystem',
+    problem: 'Citizens face significant barriers in reporting public issues, tracking complaints, and participating in governance. Communication gaps between the public and government institutions lead to unresolved infrastructure problems, waste management failures, corruption, lack of transparency, and slow response times across all administrative levels from Union Parishad to Ministry offices.',
+    solution: 'Built a comprehensive digital governance platform that enables citizens to report incidents (damaged roads, broken infrastructure, waste management, water supply, illegal encroachments, environmental concerns, corruption) with photos, location, and descriptions. Features multi-level monitoring (Union Parishad → Upazila → District → Division → Ministry), anonymous reporting for sensitive cases, process improvement proposals, policy analysis dashboards, public asset monitoring, community voting, and intelligent analytics with heatmaps and geographic visualization.',
   },
 ];
 
