@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Filter, ExternalLink, ChevronRight } from 'lucide-react';
+import { Filter, ExternalLink, ChevronRight, Rocket, Github } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import ammoniaDriveImg from '@/assets/ammonia-drive.jpg';
 import bioEnvelopeImg from '@/assets/bio-envelope.png';
@@ -200,66 +201,92 @@ const ProjectsSection = () => {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 px-6 relative overflow-hidden" id="projects">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-text" id="projects">
-            Projects & Applications
+          <Badge variant="outline" className="mb-6 border-data/30 bg-data/5 text-data">
+            <Rocket className="h-3.5 w-3.5 mr-2" />
+            Translational Research Output
+          </Badge>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="section-title hero-text">Projects & Applications</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Our research translates into practical solutions that address real-world challenges
-            across multiple industries and domains.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mt-12">
+            From prototype to production — our research translates into deployed systems
+            and scalable solutions addressing high-impact challenges across sectors and societies.
           </p>
         </div>
 
         {/* Category Filter */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <Filter className="h-4 w-4 text-muted-foreground" />
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedCategory(category)}
-              className="transition-all duration-300"
-            >
-              {category}
-            </Button>
-          ))}
+        <div className="mb-12">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Filter className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-muted-foreground">Filter by Research Domain:</span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedCategory(category)}
+                className={`transition-all duration-300 text-xs sm:text-sm ${selectedCategory === category ? 'data-glow btn-primary' : 'hover:border-primary/40'}`}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredProjects.map((project) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
+          {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
-              className="project-card rounded-xl overflow-hidden cursor-pointer group"
+              className="project-card rounded-2xl overflow-hidden cursor-pointer group animate-fade-in-up"
+              style={{ animationDelay: `${idx * 0.05}s` }}
               onClick={() => setSelectedProject(project)}
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden h-52">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs rounded-full mb-2">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
+                  <Badge className="bg-primary text-primary-foreground border-0 backdrop-blur-sm">
                     {project.category}
-                  </span>
+                  </Badge>
+                  <Badge variant="outline" className="bg-background/60 backdrop-blur-sm border-border text-foreground">
+                    #{String(project.id).padStart(2, '0')}
+                  </Badge>
                 </div>
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-lg md:text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
                   {project.description}
                 </p>
-                <div className="flex items-center text-primary text-sm font-medium">
-                  <span>View Details</span>
-                  <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.technologies.slice(0, 3).map((tech: string) => (
+                    <span key={tech} className="tech-badge px-2 py-0.5 rounded-md text-xs">
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 3 && (
+                    <span className="tech-badge px-2 py-0.5 rounded-md text-xs">+{project.technologies.length - 3}</span>
+                  )}
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-border">
+                  <div className="flex items-center text-primary text-sm font-semibold group-hover:gap-2 gap-1 transition-all">
+                    <span>Deep Dive</span>
+                    <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
               </div>
             </div>
@@ -268,67 +295,114 @@ const ProjectsSection = () => {
 
         {/* Project Detail Modal */}
         {selectedProject && (
-          <div className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="bg-card border border-border rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in-up">
+            <div className="absolute inset-0 bg-background/90 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
+            <div className="bg-card border border-border rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto relative z-10 shadow-2xl research-card">
               <div className="relative">
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-64 md:h-72 object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 bg-background/80 hover:bg-background text-foreground rounded-full p-2 transition-colors"
+                  className="absolute top-4 right-4 w-10 h-10 bg-card/80 backdrop-blur-sm hover:bg-card text-foreground rounded-full flex items-center justify-center border border-border transition-all hover:border-primary/40"
                 >
                   ✕
                 </button>
+                <div className="absolute top-4 left-4">
+                  <Badge variant="outline" className="bg-card/70 backdrop-blur-sm border-border text-xs">
+                    Project #{String(selectedProject.id).padStart(2, '0')}
+                  </Badge>
+                </div>
               </div>
               
-              <div className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="px-3 py-1 bg-primary text-primary-foreground text-sm rounded-full">
+              <div className="p-6 md:p-10 -mt-16 relative z-10">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <Badge className="bg-primary text-primary-foreground border-0">
                     {selectedProject.category}
-                  </span>
-                  <h3 className="text-3xl font-bold hero-text">
-                    {selectedProject.title}
-                  </h3>
+                  </Badge>
+                  <Badge variant="secondary" className="bg-muted/60">
+                    {selectedProject.technologies.length} Technologies
+                  </Badge>
                 </div>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6 hero-text">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed border-l-2 border-primary pl-4">
+                  {selectedProject.description}
+                </p>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="text-xl font-semibold mb-3 text-primary">Problem Statement</h4>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {selectedProject.problem}
-                    </p>
-
-                    <h4 className="text-xl font-semibold mb-3 text-accent">Our Solution</h4>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {selectedProject.solution}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xl font-semibold mb-3 text-neural">Technologies Used</h4>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {selectedProject.technologies.map((tech: string) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                  <div className="space-y-7">
+                    <div className="rounded-xl bg-muted/30 border border-border p-5">
+                      <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary"></span>
+                        <span className="text-primary">Problem Statement</span>
+                      </h4>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {selectedProject.problem}
+                      </p>
                     </div>
 
-                    <h4 className="text-xl font-semibold mb-3 text-primary">Results</h4>
-                    <p className="text-accent font-medium text-lg">
-                      {selectedProject.results}
-                    </p>
+                    <div className="rounded-xl bg-muted/30 border border-border p-5">
+                      <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-accent"></span>
+                        <span className="text-accent">Research + Solution</span>
+                      </h4>
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {selectedProject.solution}
+                      </p>
+                    </div>
+                  </div>
 
-                    <div className="mt-8 flex gap-4">
-                      <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity">
+                  <div className="space-y-7">
+                    <div className="rounded-xl bg-muted/30 border border-border p-5">
+                      <h4 className="text-lg font-bold mb-4 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-neural"></span>
+                        <span className="text-neural">Tech Stack</span>
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.technologies.map((tech: string) => (
+                          <span
+                            key={tech}
+                            className="tech-badge px-3 py-1.5 rounded-lg text-xs font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 p-5">
+                      <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-data"></span>
+                        <span className="text-data">Key Outcomes</span>
+                      </h4>
+                      <p className="text-foreground font-semibold text-base md:text-lg leading-relaxed">
+                        {selectedProject.results}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                      <a
+                        href={selectedProject.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity data-glow btn-primary flex-1"
+                      >
                         <ExternalLink className="h-4 w-4" />
-                        View Project
+                        Live Project
+                      </a>
+                      <a
+                        href={selectedProject.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium border border-border hover:border-primary/40 hover:bg-muted/50 transition-colors flex-1"
+                      >
+                        <Github className="h-4 w-4" />
+                        Code & Details
                       </a>
                     </div>
                   </div>

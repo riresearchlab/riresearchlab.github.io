@@ -56,8 +56,10 @@ const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Email</h4>
-                  <p className="text-muted-foreground">riresearchlabratory@gmail.com</p>
+                  <h4 className="font-semibold mb-1">Research Inquiries</h4>
+                  <a href="mailto:researchlabri@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    researchlabri@gmail.com
+                  </a>
                 </div>
               </div>
 
@@ -94,8 +96,11 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card border border-border rounded-xl p-8">
-            <h3 className="text-2xl font-bold mb-6">Send us a Message (Currently Unavailable)</h3>
+          <div className="bg-card border border-border rounded-xl p-8 research-card">
+            <h3 className="text-2xl font-bold mb-2">Send us a Message</h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              Prefer email? Reach us directly at <a href="mailto:researchlabri@gmail.com" className="text-primary hover:underline font-medium">researchlabri@gmail.com</a>
+            </p>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -157,14 +162,16 @@ const ContactSection = () => {
                 />
               </div>
 
-              <Button type="submit" className="w-full data-glow">
+              <Button type="submit" className="w-full data-glow btn-primary">
                 <Send className="h-4 w-4 mr-2" />
                 Send Message
               </Button>
             </form>
 
-            <p className="text-xs text-muted-foreground mt-4 text-center">
-              We typically respond within 24 hours during business days.
+            <p className="text-xs text-muted-foreground mt-6 pt-4 border-t border-border text-center">
+              We typically respond within 24-48 hours during business days.
+              <br />
+              <span className="text-primary/70">For urgent collaboration inquiries, please email us directly.</span>
             </p>
           </div>
         </div>

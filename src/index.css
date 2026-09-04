@@ -2,86 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-/* RI Research Lab Design System - Sophisticated Dark Theme */
+/* RI Research Lab Design System - Advanced CS Research Lab Theme */
 
 @layer base {
   :root {
-    /* Dark base colors inspired by the logo */
-    --background: 215 28% 8%;
+    /* Deep academic dark theme */
+    --background: 222 47% 5%;
     --foreground: 210 40% 98%;
 
-    /* Card system with subtle transparency */
-    --card: 217 28% 12%;
+    /* Card system with glass morphism feel */
+    --card: 222 32% 8%;
     --card-foreground: 210 40% 98%;
 
     /* Popover elements */
-    --popover: 217 28% 12%;
+    --popover: 222 32% 10%;
     --popover-foreground: 210 40% 98%;
 
-    /* Primary electric blue from logo */
-    --primary: 200 100% 60%;
-    --primary-foreground: 215 28% 8%;
+    /* Primary - Deep Cyan (AI/Research feel) */
+    --primary: 190 95% 50%;
+    --primary-foreground: 222 47% 5%;
 
-    /* Secondary with subtle blue tint */
-    --secondary: 217 28% 15%;
+    /* Secondary - Deep Navy */
+    --secondary: 217 33% 12%;
     --secondary-foreground: 210 40% 98%;
 
     /* Muted backgrounds */
-    --muted: 217 28% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 217 23% 14%;
+    --muted-foreground: 215 16% 70%;
 
-    /* Accent neon green from logo */
-    --accent: 150 100% 45%;
-    --accent-foreground: 215 28% 8%;
+    /* Accent - Electric Violet (Innovation/Discovery) */
+    --accent: 265 90% 60%;
+    --accent-foreground: 210 40% 98%;
 
-    /* Neural network blue variant */
-    --neural: 195 100% 70%;
-    --neural-foreground: 215 28% 8%;
+    /* Neural - Teal (Networks/Systems) */
+    --neural: 175 80% 50%;
+    --neural-foreground: 222 47% 5%;
 
-    /* Data visualization accent */
-    --data: 180 100% 50%;
-    --data-foreground: 215 28% 8%;
+    /* Data - Emerald (Data Science/Analytics) */
+    --data: 152 76% 45%;
+    --data-foreground: 222 47% 5%;
 
     /* Destructive states */
-    --destructive: 0 84% 60%;
+    --destructive: 0 70% 55%;
     --destructive-foreground: 210 40% 98%;
 
     /* Borders and inputs */
-    --border: 217 28% 20%;
-    --input: 217 28% 18%;
-    --ring: 200 100% 60%;
+    --border: 217 23% 20%;
+    --input: 217 23% 16%;
+    --ring: 190 95% 50%;
 
     /* Design system radius */
     --radius: 0.75rem;
 
-    /* Advanced gradients for data visualization */
-    --gradient-neural: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--neural)) 50%, hsl(var(--accent)) 100%);
-    --gradient-data: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--data)) 100%);
-    --gradient-hero: radial-gradient(ellipse at center, hsl(var(--primary) / 0.1) 0%, transparent 70%);
+    /* Advanced gradients */
+    --gradient-neural: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--neural)) 100%);
+    --gradient-data: linear-gradient(90deg, hsl(var(--data)) 0%, hsl(var(--primary)) 100%);
+    --gradient-hero: radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.15) 0%, hsl(var(--accent) / 0.08) 40%, transparent 70%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.3) 50%, hsl(var(--background)) 100%);
     
     /* Sophisticated shadows */
-    --shadow-neural: 0 0 30px hsl(var(--primary) / 0.3);
-    --shadow-glow: 0 0 40px hsl(var(--accent) / 0.2);
-    --shadow-data: 0 10px 40px hsl(var(--primary) / 0.1);
+    --shadow-neural: 0 0 40px hsl(var(--primary) / 0.25);
+    --shadow-glow: 0 0 50px hsl(var(--accent) / 0.2);
+    --shadow-data: 0 20px 60px -15px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 24px -8px hsl(0 0% 0% / 0.4);
+    --shadow-elevated: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
 
     /* Smooth transitions */
-    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -129,13 +127,42 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background-image: 
+      radial-gradient(circle at 15% 50%, hsl(var(--primary) / 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 85% 20%, hsl(var(--accent) / 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, hsl(var(--neural) / 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
   }
 }
 
 @layer components {
+  /* Grid background pattern */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--muted-foreground) / 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
   /* Neural Network Animation */
   .neural-background {
     background: hsl(var(--background));
@@ -152,38 +179,196 @@
     animation: flow 3s ease-in-out infinite;
   }
 
+  /* Research Card - Enhanced */
   .research-card {
-    background: hsl(var(--card));
+    background: var(--gradient-card);
     border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .research-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  .research-card:hover::before {
+    opacity: 1;
   }
 
   .research-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-neural);
-    border-color: hsl(var(--primary) / 0.5);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-neural), var(--shadow-elevated);
+    border-color: hsl(var(--primary) / 0.4);
   }
 
+  /* Project Card - Enhanced */
   .project-card {
-    background: hsl(var(--card));
+    background: var(--gradient-card);
     border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.08) 0%, transparent 50%);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+  }
+
+  .project-card:hover::after {
+    opacity: 1;
   }
 
   .project-card:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-data);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-data), var(--shadow-elevated);
+    border-color: hsl(var(--accent) / 0.4);
   }
 
+  /* Gradient text */
   .hero-text {
     background: var(--gradient-neural);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .section-title {
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-neural);
+    border-radius: 2px;
   }
 
   .data-glow {
     box-shadow: var(--shadow-glow);
+    transition: var(--transition-smooth);
+  }
+
+  .data-glow:hover {
+    box-shadow: 0 0 60px hsl(var(--accent) / 0.3);
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+
+  /* Button hover effect */
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+
+  /* Navigation link underline */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-neural);
+    transition: var(--transition-fast);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Stat counter card */
+  .stat-card {
+    background: hsl(var(--card) / 0.5);
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(8px);
+    transition: var(--transition-smooth);
+  }
+
+  .stat-card:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    transform: scale(1.02);
+  }
+
+  /* Tech badge */
+  .tech-badge {
+    background: hsl(var(--muted) / 0.8);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-fast);
+  }
+
+  .tech-badge:hover {
+    background: hsl(var(--primary) / 0.15);
+    border-color: hsl(var(--primary) / 0.4);
+    color: hsl(var(--primary));
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
   }
 }
 
@@ -207,4 +392,50 @@
     stroke-dashoffset: 10;
     opacity: 0.8;
   }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
 }
