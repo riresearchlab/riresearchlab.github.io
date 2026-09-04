@@ -6,6 +6,12 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
+// Web3Forms access key. Get yours free at https://web3forms.com (enter
+// researchlabri@gmail.com, confirm the email, paste the key below or set
+// VITE_WEB3FORMS_KEY in a .env file). The key is public-safe by design.
+const WEB3FORMS_KEY =
+  import.meta.env.VITE_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE';
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,15 +19,48 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  const [botField, setBotField] = useState('');
+  const [sending, setSending] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your interest. We'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    if (botField) return; // honeypot tripped — silently drop
+    setSending(true);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: `[RI Research Lab] ${formData.subject}`,
+          message: formData.message,
+          from_name: 'RI Research Lab Website',
+          replyto: formData.email,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast({
+          title: 'Message sent!',
+          description: "Thank you for your interest. We'll get back to you within 24-48 hours.",
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      toast({
+        title: "Couldn't send your message",
+        description:
+          'Something went wrong. Please email us directly at researchlabri@gmail.com.',
+        variant: 'destructive',
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -168,9 +207,21 @@ const ContactSection = () => {
                 />
               </div>
 
-              <Button type="submit" className="w-full data-glow btn-primary">
+              {/* Honeypot — hidden from humans, filled by bots */}
+              <input
+                type="text"
+                name="botcheck"
+                value={botField}
+                onChange={(e) => setBotField(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
+
+              <Button type="submit" disabled={sending} className="w-full data-glow btn-primary">
                 <Send className="h-4 w-4 mr-2" />
-                Send Message
+                {sending ? 'Sending…' : 'Send Message'}
               </Button>
             </form>
 
