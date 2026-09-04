@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Mail, Phone, Globe, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, Globe, MapPin, Send, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
@@ -31,15 +32,20 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-24 px-6 relative overflow-hidden">
+      <div className="absolute inset-0 dot-pattern opacity-20" />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-text">
-            Contact Us
+          <Badge variant="outline" className="mb-6 border-neural/30 bg-neural/5 text-neural">
+            <MessageCircle className="h-3.5 w-3.5 mr-2" />
+            Get In Touch
+          </Badge>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="section-title hero-text">Contact Us</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Ready to collaborate, have questions about our research, or want to join our team?
-            We'd love to hear from you.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mt-12">
+            Ready to collaborate on research, have questions about our projects, or interested in
+            joining our team? We read every message and respond within 24–48 hours.
           </p>
         </div>
 
