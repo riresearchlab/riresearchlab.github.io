@@ -1,4 +1,4 @@
-import { ExternalLink, ArrowUpRight, Library, Landmark, Coins, GraduationCap } from 'lucide-react';
+import { ExternalLink, ArrowUpRight, Library, Landmark, Coins, GraduationCap, Binary } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const resources = [
@@ -35,6 +35,17 @@ const resources = [
     highlights: ['Global, US & Bangladesh top 20 views', 'CS, SE, IT, AI & Data Science', 'Direct official department links'],
     tags: ['Higher Education', 'Rankings Data', 'Graduate Pathways'],
   },
+  {
+    id: 'reverse-engineering-research-arena',
+    title: 'Reverse Engineering Arena',
+    subtitle: 'LLM-Assisted Research Directions',
+    icon: Binary,
+    url: 'https://riresearchlab.github.io/reverse-engineering-research-arena/',
+    description:
+      'An open catalog of thirty-five LLM-assisted research directions for turning raw bytes back into human meaning \u2014 spanning decompilation, malware and firmware analysis, kernel internals, hardware signals and smart contracts.',
+    highlights: ['35 research tracks across 8 domains', 'Question, objective & method per track', 'Searchable, keyword-filtered workspace'],
+    tags: ['Reverse Engineering', 'Binary Analysis', 'LLM Research'],
+  },
 ];
 
 const ResourcesSection = () => {
@@ -56,7 +67,7 @@ const ResourcesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {resources.map((resource, idx) => {
             const Icon = resource.icon;
             return (
