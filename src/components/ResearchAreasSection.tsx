@@ -1,135 +1,142 @@
-import { useState } from 'react';
-import { Cpu, Brain, Network, MessageSquare, Layers, Globe, Satellite, TrendingUp, Clock, Heart } from 'lucide-react';
-
-const researchAreas = [
-  {
-    id: 'computer-science',
-    title: 'Computer Science',
-    icon: Cpu,
-    summary: 'Fundamental algorithms, data structures, and computational theory research.',
-    description: 'Advancing the core principles of computer science through algorithm optimization, complexity analysis, and innovative computing paradigms. Our work spans theoretical computer science to practical software engineering solutions.',
-  },
-  {
-    id: 'artificial-intelligence',
-    title: 'Artificial Intelligence',
-    icon: Brain,
-    summary: 'Machine learning, deep learning, and cognitive computing systems.',
-    description: 'Developing next-generation AI systems that can learn, reason, and adapt. Our research focuses on explainable AI, ethical machine learning, and human-AI collaboration frameworks.',
-  },
-  {
-    id: 'distributed-systems',
-    title: 'Distributed Systems',
-    icon: Network,
-    summary: 'Scalable, fault-tolerant systems for modern computing environments.',
-    description: 'Building resilient distributed architectures for cloud computing, edge processing, and IoT ecosystems. Our focus includes consensus algorithms, system reliability, and performance optimization.',
-  },
-  {
-    id: 'neural-networking',
-    title: 'Neural Networking',
-    icon: Layers,
-    summary: 'Advanced neural architectures and connectivity patterns.',
-    description: 'Exploring novel neural network topologies, biological-inspired computing models, and brain-computer interfaces. Our research bridges neuroscience and computational intelligence.',
-  },
-  {
-    id: 'large-language-models',
-    title: 'Large Language Models',
-    icon: MessageSquare,
-    summary: 'Natural language processing and generative AI systems.',
-    description: 'Developing sophisticated language models for multilingual understanding, generation, and reasoning. Our work focuses on efficiency, safety, and cultural adaptation of LLMs.',
-  },
-  {
-    id: 'space-data',
-    title: 'Space Data Analysis',
-    icon: Satellite,
-    summary: 'Astronomical data processing and space mission analytics.',
-    description: 'Processing vast datasets from space missions, satellite observations, and astronomical surveys. Our work includes orbital mechanics modeling, space weather prediction, and deep space exploration data analysis.',
-  },
-  {
-    id: 'financial-analysis',
-    title: 'Financial Analytics',
-    icon: TrendingUp,
-    summary: 'Quantitative finance and market intelligence systems.',
-    description: 'Developing predictive models for financial markets, risk assessment algorithms, and blockchain analytics. Our research focuses on algorithmic trading, fraud detection, and financial technology innovation.',
-  },
-  {
-    id: 'history-visualization',
-    title: 'History Visualization',
-    icon: Clock,
-    summary: 'Digital humanities and historical data representation.',
-    description: 'Creating immersive visualizations of historical data, cultural heritage preservation, and timeline analytics. Our work includes archaeological data modeling, historical trend analysis, and interactive historical narratives.',
-  },
-  {
-    id: 'human-health',
-    title: 'Human Health Analytics',
-    icon: Heart,
-    summary: 'Healthcare data science and medical informatics.',
-    description: 'Advancing personalized medicine through genomic analysis, epidemiological modeling, and health outcome prediction. Our research includes drug discovery acceleration, clinical trial optimization, and public health monitoring systems.',
-  },
-];
+import { useEffect, useState } from 'react';
+import { ArrowRight, ArrowUpRight, Link2, FolderGit2 } from 'lucide-react';
+import SectionHeader from './SectionHeader';
+import { researchAreas, crossLinks, areaProjects } from '@/data/lab';
+import { openProject } from './ProjectsSection';
 
 const ResearchAreasSection = () => {
-  const [hoveredArea, setHoveredArea] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState(researchAreas[1].id);
+
+  useEffect(() => {
+    const onSelect = (e: Event) => setActiveId((e as CustomEvent<string>).detail);
+    window.addEventListener('ri:select-area', onSelect);
+    return () => window.removeEventListener('ri:select-area', onSelect);
+  }, []);
+
+  const activeIndex = researchAreas.findIndex((a) => a.id === activeId);
+  const active = researchAreas[activeIndex];
+  const Icon = active.icon;
+  const related = crossLinks
+    .filter(([a, b]) => a === activeIndex || b === activeIndex)
+    .map(([a, b]) => researchAreas[a === activeIndex ? b : a]);
+  const projects = areaProjects[active.id] ?? [];
 
   return (
-    <section className="py-24 px-6 bg-muted/20">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-text" id="researchareas">
-            Research Areas
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Our multidisciplinary approach spans five core areas of computer science and artificial intelligence,
-            each contributing to our comprehensive research ecosystem.
-          </p>
-        </div>
+    <section id="research" className="relative py-24 md:py-32 bg-card/60 border-y">
+      <div className="absolute inset-0 dot-bg opacity-60 fade-mask-radial pointer-events-none" />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHeader
+          index="02"
+          eyebrow="Research areas"
+          title={
+            <>
+              Nine fields, <span className="text-gradient">one connected agenda</span>.
+            </>
+          }
+          description="Our work spans core computer science through applied analytics. Pick an area to see what we study, how it connects to the rest of the lab, and where it already ships."
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {researchAreas.map((area) => {
-            const IconComponent = area.icon;
-            const isHovered = hoveredArea === area.id;
-            
-            return (
-              <div
-                key={area.id}
-                className="research-card p-8 rounded-xl cursor-pointer group relative overflow-hidden"
-                onMouseEnter={() => setHoveredArea(area.id)}
-                onMouseLeave={() => setHoveredArea(null)}
-              >
-                <div className="relative z-10">
-                  <IconComponent className="h-12 w-12 text-primary mb-6 group-hover:text-accent transition-colors duration-300" />
-                  
-                  <h3 className="text-2xl font-semibold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)]">
+          {/* Area list */}
+          <div role="tablist" aria-label="Research areas" className="reveal -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 snap-x lg:mx-0 lg:grid lg:grid-cols-1 lg:overflow-visible lg:px-0 lg:pb-0 [scrollbar-width:none]">
+            {researchAreas.map((area, i) => {
+              const AreaIcon = area.icon;
+              const selected = area.id === activeId;
+              return (
+                <button
+                  key={area.id}
+                  role="tab"
+                  aria-selected={selected}
+                  aria-controls="research-panel"
+                  onClick={() => setActiveId(area.id)}
+                  className={`group flex shrink-0 snap-start items-center gap-3 lg:gap-4 rounded-xl border px-4 py-3 lg:py-3.5 text-left transition-all ${
+                    selected
+                      ? 'border-primary/40 bg-card shadow-[var(--shadow-soft)]'
+                      : 'border-border lg:border-transparent bg-card lg:bg-transparent hover:border-border hover:bg-card/80'
+                  }`}
+                >
+                  <span className="hidden lg:inline w-6 font-mono text-xs text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                  <span className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors ${selected ? 'bg-brand text-white' : 'bg-muted text-muted-foreground group-hover:text-primary'}`}>
+                    <AreaIcon className="h-4 w-4" />
+                  </span>
+                  <span className={`whitespace-nowrap flex-1 font-display font-semibold ${selected ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'}`}>
                     {area.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground leading-relaxed mb-4 transition-all duration-300">
-                    {isHovered ? area.description : area.summary}
-                  </p>
+                  </span>
+                  <ArrowRight className={`hidden lg:block h-4 w-4 transition-all ${selected ? 'text-primary translate-x-0 opacity-100' : 'opacity-0 -translate-x-2'}`} />
+                </button>
+              );
+            })}
+          </div>
 
-                  <div className={`transition-all duration-300 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                    <button className="text-primary hover:text-accent font-medium text-sm uppercase tracking-wider">
-                      Learn More →
-                    </button>
+          {/* Detail panel */}
+          <div
+            id="research-panel"
+            role="tabpanel"
+            key={active.id}
+            className="relative overflow-hidden rounded-3xl border bg-card p-8 md:p-10 animate-in fade-in slide-in-from-bottom-2 duration-500"
+            style={{ boxShadow: 'var(--shadow-lift)' }}
+          >
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-[0.12] bg-brand blur-2xl" />
+            <div className="relative">
+              <div className="flex items-start justify-between gap-6">
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-white shadow-lg">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <span className="font-mono text-xs text-muted-foreground">
+                  Area {String(activeIndex + 1).padStart(2, '0')} / {String(researchAreas.length).padStart(2, '0')}
+                </span>
+              </div>
+
+              <h3 className="mt-7 text-3xl md:text-4xl font-semibold">{active.title}</h3>
+              <p className="mt-3 text-lg font-medium text-primary">{active.summary}</p>
+              <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-muted-foreground">{active.description}</p>
+
+              <div className="mt-9 grid gap-6 border-t pt-7 md:grid-cols-2">
+                <div>
+                  <div className="eyebrow mb-3">
+                    <Link2 className="h-3.5 w-3.5" /> Connected fields
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {related.map((r) => (
+                      <button
+                        key={r.id}
+                        onClick={() => setActiveId(r.id)}
+                        className="chip hover:border-primary/40 hover:text-foreground transition-colors"
+                      >
+                        {r.title}
+                      </button>
+                    ))}
                   </div>
                 </div>
-
-                {/* Animated background effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
-                
-                {/* Glow effect */}
-                <div className={`absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-xl blur transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+                <div>
+                  <div className="eyebrow mb-3">
+                    <FolderGit2 className="h-3.5 w-3.5" /> Applied in
+                  </div>
+                  {projects.length > 0 ? (
+                    <div className="flex flex-wrap gap-2">
+                      {projects.map((title) => (
+                        <button
+                          key={title}
+                          onClick={() => openProject(title)}
+                          className="chip !border-accent/25 !bg-accent/5 !text-accent hover:!bg-accent/10 transition-colors"
+                        >
+                          {title}
+                          <ArrowUpRight className="h-3 w-3" />
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      Early-stage — we're looking for collaborators.{' '}
+                      <a href="#contact" className="font-medium text-primary hover:underline">
+                        Propose a project →
+                      </a>
+                    </p>
+                  )}
+                </div>
               </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-lg text-muted-foreground mb-8">
-            Interested in collaborating on any of these research areas?
-          </p>
-          <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-colors duration-300 data-glow">
-            Join Our Research Community
-          </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

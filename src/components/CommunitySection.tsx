@@ -1,186 +1,124 @@
-import { Users, Target, BookOpen, Award, Handshake, GraduationCap, Briefcase, FileText, ArrowRight, Mail } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { GraduationCap, Briefcase, BookOpen, ArrowRight, Mail, Award } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 
-const CommunitySection = () => {
-  return (
-    <section className="py-24 px-6 relative overflow-hidden">
-      <div className="absolute inset-0" style={{ background: 'var(--gradient-section)' }} />
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-6 border-neural/30 bg-neural/5 text-neural">
-            <Handshake className="h-3.5 w-3.5 mr-2" />
-            Open Research Ecosystem
-          </Badge>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="section-title hero-text">Community & Collaboration</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mt-12">
-            Building a thriving, inclusive research ecosystem through active partnerships,
-            open knowledge sharing, and the establishment of rigorous new standards for R&D excellence.
-          </p>
-        </div>
+const benchmark = [
+  { title: 'Standardized metrics', body: 'Evaluation criteria covering research quality, reproducibility, deployment rigor and societal impact.' },
+  { title: 'Open collaboration', body: 'Transparent, inclusive and ethical practices that accelerate shared innovation across institutions.' },
+  { title: 'Global + local impact', body: 'Outcomes that translate into deployable solutions for global challenges and under-served regional contexts.' },
+];
 
-        {/* RI Research Benchmark */}
-        <div className="bg-card border border-border rounded-2xl p-8 md:p-12 mb-16 research-card">
-          <div className="text-center mb-10">
-            <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl flex items-center justify-center mx-auto mb-6">
-              <Award className="h-10 w-10 text-primary" />
-            </div>
-            <h3 className="text-3xl md:text-4xl font-bold mb-4 hero-text">
-              RI Research Benchmark
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              An evolving standard for measuring research and development excellence in computer science,
-              AI, distributed systems, and data-driven innovation — designed for the Global South.
+const audiences = [
+  {
+    icon: GraduationCap,
+    title: 'Students & early-career researchers',
+    body: 'Structured research internships, thesis co-supervision, hands-on engineering experience and publication mentorship.',
+  },
+  {
+    icon: Briefcase,
+    title: 'Industry engineers & practitioners',
+    body: 'Bring production-grade engineering to research challenges; co-design systems that scale from prototype to deployment.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Faculty, scientists & partner labs',
+    body: 'Co-author papers, co-supervise students, pursue joint grants and run shared experimental programs.',
+  },
+];
+
+const openings = [
+  { label: 'Research internships', status: 'Open' },
+  { label: 'Joint projects', status: 'Accepting' },
+  { label: 'Visiting researchers', status: 'Apply' },
+];
+
+const CommunitySection = () => (
+  <section id="community" className="relative py-24 md:py-32 bg-card/60 border-y">
+    <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <SectionHeader
+        index="06"
+        eyebrow="Community & collaboration"
+        title={
+          <>
+            Research is a team sport. <span className="text-gradient">Join the team.</span>
+          </>
+        }
+        description="We are building an inclusive research ecosystem through partnerships, open knowledge and new standards for R&D excellence."
+      />
+
+      {/* Benchmark */}
+      <div className="reveal relative overflow-hidden rounded-3xl p-8 md:p-12 text-white" style={{ background: 'linear-gradient(135deg, #0b5f86 0%, #0d7d72 55%, #127a42 100%)' }}>
+        <div className="absolute inset-0 grid-bg opacity-30 [filter:invert(1)]" />
+        <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.16em]">
+              <Award className="h-3.5 w-3.5" /> In development
+            </span>
+            <h3 className="mt-5 text-3xl md:text-4xl font-semibold">RI Research Benchmark</h3>
+            <p className="mt-4 max-w-md text-lg leading-relaxed text-white/80">
+              An evolving standard for measuring R&D excellence in computer science, AI, distributed systems and
+              data-driven innovation — designed for the Global South.
             </p>
+            <a href="#contact" className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#0b5f86] transition hover:bg-white/90">
+              Help shape the benchmark <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div className="text-center p-6 rounded-xl bg-muted/30 border border-border">
-              <div className="w-16 h-16 bg-primary/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <span className="text-2xl font-bold text-primary">01</span>
-              </div>
-              <h4 className="text-xl font-bold mb-3">Standardized Metrics</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Comprehensive evaluation criteria covering research quality, reproducibility, deployment rigor, and societal impact.
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-xl bg-muted/30 border border-border">
-              <div className="w-16 h-16 bg-accent/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <span className="text-2xl font-bold text-accent">02</span>
-              </div>
-              <h4 className="text-xl font-bold mb-3">Open Collaboration</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Fostering transparent, inclusive, and ethical research practices that accelerate shared innovation across institutions.
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-xl bg-muted/30 border border-border">
-              <div className="w-16 h-16 bg-neural/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                <span className="text-2xl font-bold text-neural">03</span>
-              </div>
-              <h4 className="text-xl font-bold mb-3">Global + Local Impact</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Ensuring research outcomes translate to deployable solutions for both global challenges and under-served regional contexts.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Button className="data-glow btn-primary">
-              <FileText className="h-4 w-4 mr-2" />
-              Learn About the Benchmark
-            </Button>
-          </div>
-        </div>
-
-        {/* Collaboration Opportunities */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 mb-16">
-          <div className="lg:col-span-3">
-            <h3 className="text-3xl font-bold mb-6 hero-text">
-              Join Our Research Community
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
-              We actively seek collaboration with curious, passionate individuals and institutions who share our vision
-              of advancing scientific knowledge paired with practical, ethical technology deployment.
-            </p>
-
-            <div className="space-y-5">
-              <div className="flex items-start gap-5 p-5 rounded-xl border border-border bg-muted/20 hover:border-primary/30 hover:bg-muted/40 transition-all">
-                <div className="w-12 h-12 bg-primary/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <GraduationCap className="h-6 w-6 text-primary" />
-                </div>
+          <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            {benchmark.map((b, i) => (
+              <div key={b.title} className="flex gap-4 rounded-2xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur-sm">
+                <span className="font-mono text-sm font-bold text-white/60">0{i + 1}</span>
                 <div>
-                  <h4 className="font-bold mb-1">Students & Early-Career Researchers</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Structured research internships, thesis co-supervision, hands-on engineering experience, and publication mentorship.
-                  </p>
+                  <h4 className="font-semibold">{b.title}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-white/75">{b.body}</p>
                 </div>
               </div>
-
-              <div className="flex items-start gap-5 p-5 rounded-xl border border-border bg-muted/20 hover:border-accent/30 hover:bg-muted/40 transition-all">
-                <div className="w-12 h-12 bg-accent/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Briefcase className="h-6 w-6 text-accent" />
-                </div>
-                <div>
-                  <h4 className="font-bold mb-1">Industry Engineers & Practitioners</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Apply production-grade engineering to research challenges; co-design systems that scale from prototype to deployment.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 p-5 rounded-xl border border-border bg-muted/20 hover:border-neural/30 hover:bg-muted/40 transition-all">
-                <div className="w-12 h-12 bg-neural/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="h-6 w-6 text-neural" />
-                </div>
-                <div>
-                  <h4 className="font-bold mb-1">Faculty, Scientists & Partner Labs</h4>
-                  <p className="text-muted-foreground text-sm">
-                    Co-author papers, co-supervise students, pursue joint grants, and run shared experimental research programs.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-2 bg-card border border-border rounded-2xl p-8 research-card self-start lg:sticky lg:top-24">
-            <h4 className="text-2xl font-bold mb-2 text-center">Get Involved</h4>
-            <p className="text-muted-foreground text-sm text-center mb-7">
-              Rolling openings. No deadlines — apply when ready.
-            </p>
-            
-            <div className="space-y-3 mb-8">
-              <div className="flex justify-between items-center p-4 bg-muted/40 rounded-xl hover:bg-muted/60 transition-colors">
-                <span className="font-medium text-sm">Research Internships</span>
-                <span className="text-primary text-xs font-bold px-2 py-0.5 bg-primary/10 rounded-full">● Open</span>
-              </div>
-              <div className="flex justify-between items-center p-4 bg-muted/40 rounded-xl hover:bg-muted/60 transition-colors">
-                <span className="font-medium text-sm">Joint Projects</span>
-                <span className="text-accent text-xs font-bold px-2 py-0.5 bg-accent/10 rounded-full">● Accepting</span>
-              </div>
-              <div className="flex justify-between items-center p-4 bg-muted/40 rounded-xl hover:bg-muted/60 transition-colors">
-                <span className="font-medium text-sm">Visiting Researchers</span>
-                <span className="text-neural text-xs font-bold px-2 py-0.5 bg-neural/10 rounded-full">● Apply</span>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <Button className="w-full data-glow btn-primary" onClick={() => window.location.href = '#contact'}>
-                Apply for Collaboration
-                <ArrowRight className="h-4 w-4 ml-2" />
-              </Button>
-              <a
-                href="mailto:researchlabri@gmail.com"
-                className="inline-flex items-center justify-center w-full h-10 px-4 py-2 rounded-md border border-input bg-background hover:bg-accent/5 hover:border-primary/40 hover:text-primary text-sm font-medium transition-colors"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                Email: researchlabri@gmail.com
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center p-8 md:p-12 bg-gradient-to-br from-primary/10 via-accent/5 to-neural/10 rounded-2xl border border-primary/20 relative overflow-hidden">
-          <div className="absolute inset-0 grid-pattern opacity-20" />
-          <div className="relative z-10">
-            <h4 className="text-2xl md:text-3xl font-bold mb-4">Ready to Push Research Boundaries With Us?</h4>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Whether you're seeking an internship, a co-authorship, or a long-term institutional partnership —
-              we'd love to discuss how we can create meaningful research together.
-            </p>
-            <Button size="lg" className="data-glow btn-primary" onClick={() => window.location.href = '#contact'}>
-              Start a Research Conversation
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
+            ))}
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+
+      {/* Get involved */}
+      <div className="mt-8 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <div className="grid gap-4">
+          {audiences.map((a, i) => {
+            const Icon = a.icon;
+            return (
+              <div key={a.title} className="reveal surface surface-hover flex gap-5 p-6" style={{ '--d': `${i * 80}ms` } as React.CSSProperties}>
+                <span className="icon-tile h-12 w-12 shrink-0">
+                  <Icon className="h-5 w-5 text-primary" />
+                </span>
+                <div>
+                  <h4 className="text-lg font-semibold">{a.title}</h4>
+                  <p className="mt-1 leading-relaxed text-muted-foreground">{a.body}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <aside className="reveal surface p-7 lg:sticky lg:top-24 self-start">
+          <h4 className="text-2xl font-semibold">Get involved</h4>
+          <p className="mt-1 text-sm text-muted-foreground">Rolling openings — no deadlines. Apply when you're ready.</p>
+          <ul className="mt-6 divide-y rounded-2xl border">
+            {openings.map((o) => (
+              <li key={o.label} className="flex items-center justify-between px-4 py-3.5">
+                <span className="font-medium">{o.label}</span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-ring" />
+                  {o.status}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <a href="#contact" className="btn-brand mt-6 w-full">
+            Apply for collaboration <ArrowRight className="h-4 w-4" />
+          </a>
+          <a href="mailto:researchlabri@gmail.com" className="btn-ghost mt-3 w-full">
+            <Mail className="h-4 w-4" /> researchlabri@gmail.com
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+);
 
 export default CommunitySection;
