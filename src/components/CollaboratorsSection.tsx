@@ -1,7 +1,7 @@
 import SectionHeader from './SectionHeader';
-import partners from '@/data/partners.json';
+import collaborators from '@/data/collaborators.json';
 
-const PartnersSection = () => (
+const CollaboratorsSection = () => (
   <section id="collaborations" className="relative py-24 md:py-32">
     <div className="mx-auto max-w-7xl px-5 sm:px-8">
       <SectionHeader
@@ -9,13 +9,13 @@ const PartnersSection = () => (
         eyebrow="Collaborations"
         title={
           <>
-            Universities we <span className="text-gradient">collaborate with.</span>
+            Universities and Organizations we <span className="text-gradient">collaborate with.</span>
           </>
         }
       />
 
       <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-        {partners.map((p, i) => (
+        {collaborators.map((p, i) => (
           <a
             key={p.name}
             href={p.href}
@@ -32,4 +32,4 @@ const PartnersSection = () => (
   </section>
 );
 
-export default PartnersSection;
+export default CollaboratorsSection;

@@ -7,7 +7,7 @@ import ResourcesSection from '@/components/ResourcesSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ProcessSection from '@/components/ProcessSection';
 import CommunitySection from '@/components/CommunitySection';
-import PartnersSection from '@/components/PartnersSection';
+import CollaboratorsSection from '@/components/CollaboratorsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { useReveal } from '@/hooks/use-reveal';
@@ -27,7 +27,7 @@ const Index = () => {
         <ProjectsSection />
         <ProcessSection />
         <CommunitySection />
-        <PartnersSection />
+        <CollaboratorsSection />
         <ContactSection />
       </main>
       <Footer />

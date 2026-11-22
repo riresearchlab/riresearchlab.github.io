@@ -1,22 +1,22 @@
 [
   {
     "name": "University of Dhaka",
-    "logo": "/partners/university-of-dhaka.png",
+    "logo": "/collaborators/university-of-dhaka.png",
     "href": "https://mdrakibtrofder.github.io/education"
   },
   {
     "name": "Rajshahi University of Engineering & Technology",
-    "logo": "/partners/ruet.png",
+    "logo": "/collaborators/ruet.png",
     "href": "https://mdrakibtrofder.github.io/supervision"
   },
   {
     "name": "William & Mary",
-    "logo": "/partners/william-and-mary.png",
+    "logo": "/collaborators/william-and-mary.png",
     "href": "https://mdrakibtrofder.github.io/experience"
   },
   {
     "name": "Bangladesh Army University of Science and Technology, Saidpur",
-    "logo": "/partners/baust.png",
+    "logo": "/collaborators/baust.png",
     "href": "https://mdrakibtrofder.github.io/experience"
   }
 ]
