@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Resources', href: '#resources' },
   { label: 'Projects', href: '#projects' },
   { label: 'Community', href: '#community' },
+  { label: 'Partners', href: '#collaborations' },
   { label: 'Contact', href: '#contact' },
 ];
 

@@ -7,6 +7,7 @@ const lab = [
   { label: 'Research areas', href: '#research' },
   { label: 'Projects', href: '#projects' },
   { label: 'Community', href: '#community' },
+  { label: 'Collaborations', href: '#collaborations' },
   { label: 'Contact', href: '#contact' },
 ];
 

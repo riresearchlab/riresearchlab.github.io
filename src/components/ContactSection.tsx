@@ -83,7 +83,7 @@ const ContactSection = () => {
     <section id="contact" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeader
-          index="07"
+          index="08"
           eyebrow="Contact"
           title={
             <>
